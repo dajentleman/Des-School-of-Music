@@ -9,6 +9,7 @@ const CustomCursor = () => {
   const visible = useRef(false);
   const hovering = useRef(false);
   const raf = useRef<number>(0);
+  const listenedEls = useRef(new WeakSet<Element>());
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
@@ -44,11 +45,19 @@ const CustomCursor = () => {
       }
     };
 
+    const addListeners = () => {
+      document.querySelectorAll("a, button, [role='button']").forEach((el) => {
+        if (!listenedEls.current.has(el)) {
+          listenedEls.current.add(el);
+          el.addEventListener("mouseenter", over);
+          el.addEventListener("mouseleave", out);
+        }
+      });
+    };
+
     const animate = () => {
-      // Smooth lerp for outer cursor
       cursorPos.current.x += (pos.current.x - cursorPos.current.x) * 0.15;
       cursorPos.current.y += (pos.current.y - cursorPos.current.y) * 0.15;
-      // Faster lerp for inner dot
       dotPos.current.x += (pos.current.x - dotPos.current.x) * 0.35;
       dotPos.current.y += (pos.current.y - dotPos.current.y) * 0.35;
 
@@ -65,38 +74,29 @@ const CustomCursor = () => {
     window.addEventListener("mousemove", move);
     window.addEventListener("mouseleave", leave);
     raf.current = requestAnimationFrame(animate);
-
-    // Use MutationObserver to handle dynamic elements
-    const addListeners = () => {
-      document.querySelectorAll("a, button, [role='button']").forEach((el) => {
-        el.addEventListener("mouseenter", over);
-        el.addEventListener("mouseleave", out);
-      });
-    };
     addListeners();
-    const observer = new MutationObserver(addListeners);
+
+    // Debounced MutationObserver - only process new elements
+    let debounceTimer: number;
+    const observer = new MutationObserver(() => {
+      clearTimeout(debounceTimer);
+      debounceTimer = window.setTimeout(addListeners, 200);
+    });
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mouseleave", leave);
       cancelAnimationFrame(raf.current);
+      clearTimeout(debounceTimer);
       observer.disconnect();
     };
   }, []);
 
   return (
     <>
-      <div
-        ref={cursorRef}
-        className="custom-cursor"
-        style={{ opacity: 0 }}
-      />
-      <div
-        ref={dotRef}
-        className="cursor-dot"
-        style={{ opacity: 0 }}
-      />
+      <div ref={cursorRef} className="custom-cursor" style={{ opacity: 0 }} />
+      <div ref={dotRef} className="cursor-dot" style={{ opacity: 0 }} />
     </>
   );
 };

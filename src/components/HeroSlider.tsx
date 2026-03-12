@@ -91,12 +91,25 @@ const HeroSlider = () => {
               {slides[current].subtitle}
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 text-lg glow-gold">
-                Start Learning
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 text-lg border-muted-foreground/30 text-foreground hover:bg-muted">
-                Explore Courses
-              </Button>
+              {slides[current].accent === "Musicians" ? (
+                <>
+                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 text-lg glow-gold">
+                    Apply to Teach
+                  </Button>
+                  <Button size="lg" variant="outline" className="rounded-full px-8 text-lg border-muted-foreground/30 text-foreground hover:bg-muted">
+                    Learn More
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 text-lg glow-gold">
+                    Start Learning
+                  </Button>
+                  <Button size="lg" variant="outline" className="rounded-full px-8 text-lg border-muted-foreground/30 text-foreground hover:bg-muted">
+                    Explore Courses
+                  </Button>
+                </>
+              )}
             </div>
           </motion.div>
         </AnimatePresence>
