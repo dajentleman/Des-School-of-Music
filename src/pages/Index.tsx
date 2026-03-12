@@ -4,6 +4,7 @@ import HeroSlider from "@/components/HeroSlider";
 import AboutSection from "@/components/AboutSection";
 import InstrumentsSection from "@/components/InstrumentsSection";
 import WhyUsSection from "@/components/WhyUsSection";
+import SyllabusSection from "@/components/SyllabusSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
@@ -15,6 +16,7 @@ const Index = () => (
     <HeroSlider />
     <AboutSection />
     <InstrumentsSection />
+    <SyllabusSection />
     <WhyUsSection />
     <TestimonialsSection />
     <CTASection />

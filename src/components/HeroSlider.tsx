@@ -29,6 +29,11 @@ const slides = [
     subtitle: "Music production, mixing & mastering from scratch",
     accent: "Production",
   },
+  {
+    title: "Teach. Inspire. Get Hired.",
+    subtitle: "For musicians, by musicians — join our team of passionate educators empowering the next generation",
+    accent: "Musicians",
+  },
 ];
 
 const HeroSlider = () => {
