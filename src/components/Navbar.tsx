@@ -17,9 +17,6 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <a href="#" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-            <Music className="w-5 h-5 text-primary-foreground" />
-          </div>
           <span className="font-display text-xl font-bold text-foreground">
             Des <span className="text-primary">School of Music</span>
           </span>
