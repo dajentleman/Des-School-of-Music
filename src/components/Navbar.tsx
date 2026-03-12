@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Music, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = ["About", "Instruments", "Why Us", "Testimonials", "Contact"];

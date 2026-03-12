@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mic, Guitar, Drum, Music2, Headphones } from "lucide-react";
+import { Mic, Guitar, Drum, Headphones } from "lucide-react";
 
 const instruments = [
   { name: "Voice", icon: Mic, desc: "Develop your unique vocal identity with contemporary techniques" },
