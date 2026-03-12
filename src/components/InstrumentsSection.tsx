@@ -4,7 +4,7 @@ import { Mic, Guitar, Drum, Music2, Headphones } from "lucide-react";
 const instruments = [
   { name: "Voice", icon: Mic, desc: "Develop your unique vocal identity with contemporary techniques" },
   { name: "Guitar", icon: Guitar, desc: "Acoustic & electric — rock, blues, jazz, pop and more" },
-  { name: "Bass", icon: Music2, desc: "Lock in the rhythm section with groove-focused training" },
+  { name: "Bass", icon: Guitar, desc: "Lock in the rhythm section with groove-focused training" },
   { name: "Drums", icon: Drum, desc: "Build rock-solid timing and creative fills" },
   { name: "Music Production", icon: Headphones, desc: "Learn DAWs, mixing, mastering and beat-making" },
 ];
